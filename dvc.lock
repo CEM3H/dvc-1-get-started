@@ -1,0 +1,10 @@
+stage_feature_extraction:
+  cmd: python src/featurization.py
+  deps:
+  - path: data/iris.csv
+    md5: 57fce90c81521889c736445f058c4838
+  - path: src/featurization.py
+    md5: 81128c594b67a68c3aecd2d9eca38d9c
+  outs:
+  - path: data/iris_featurized.csv
+    md5: 04ed69383af337e9dabf934cbc8abc11

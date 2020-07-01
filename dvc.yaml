@@ -1,0 +1,8 @@
+stages:
+  stage_feature_extraction:
+    cmd: python src/featurization.py
+    deps:
+    - data/iris.csv
+    - src/featurization.py
+    outs:
+    - data/iris_featurized.csv
