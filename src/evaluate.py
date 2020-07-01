@@ -26,5 +26,5 @@ if __name__ == '__main__':
                 'matrix': cm.tolist()
             }
         },
-        fp=open('data/eval.txt', 'w')
+        fp=open('data/eval.json', 'w')
     )

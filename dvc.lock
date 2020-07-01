@@ -8,3 +8,39 @@ stage_feature_extraction:
   outs:
   - path: data/iris_featurized.csv
     md5: 04ed69383af337e9dabf934cbc8abc11
+stage_split_dataset:
+  cmd: python src/split_dataset.py --test_size 0.4
+  deps:
+  - path: data/iris_featurized.csv
+    md5: 04ed69383af337e9dabf934cbc8abc11
+  - path: src/split_dataset.py
+    md5: 5da797093e3e72ca65720df86c842a39
+  outs:
+  - path: data/test.csv
+    md5: b37f00bfd2ce46c61fe744d6d26b41d3
+  - path: data/train.csv
+    md5: 3b7d94d2e2675fb9132c42b1da980794
+stage_train:
+  cmd: python src/train.py
+  deps:
+  - path: data/train.csv
+    md5: 3b7d94d2e2675fb9132c42b1da980794
+  - path: src/train.py
+    md5: 025acbe1552887fab33f5314d036e907
+  outs:
+  - path: data/model.joblib
+    md5: a188713de6087263e9289e62c6ac5ac4
+stage_evaluate:
+  cmd: python src/evaluate.py
+  deps:
+  - path: data/model.joblib
+    md5: a188713de6087263e9289e62c6ac5ac4
+  - path: data/test.csv
+    md5: b37f00bfd2ce46c61fe744d6d26b41d3
+  - path: src/evaluate.py
+    md5: 58dabbe40428170ca3714f5d24475ea1
+  - path: src/train.py
+    md5: 025acbe1552887fab33f5314d036e907
+  outs:
+  - path: data/eval.json
+    md5: 1f7764d988d8d251dc3e9b1c5419f58b

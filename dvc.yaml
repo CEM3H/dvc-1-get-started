@@ -6,3 +6,27 @@ stages:
     - src/featurization.py
     outs:
     - data/iris_featurized.csv
+  stage_split_dataset:
+    cmd: python src/split_dataset.py --test_size 0.4
+    deps:
+    - data/iris_featurized.csv
+    - src/split_dataset.py
+    outs:
+    - data/test.csv
+    - data/train.csv
+  stage_train:
+    cmd: python src/train.py
+    deps:
+    - data/train.csv
+    - src/train.py
+    outs:
+    - data/model.joblib
+  stage_evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - data/model.joblib
+    - data/test.csv
+    - src/evaluate.py
+    - src/train.py
+    metrics:
+    - data/eval.json

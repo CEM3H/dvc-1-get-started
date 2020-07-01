@@ -1,0 +1,1 @@
+{"f1_score": 0.7861833464670345, "confusion_matrix": {"classes": ["setosa", "versicolor", "virginica"], "matrix": [[23, 0, 0], [0, 8, 0], [0, 11, 18]]}}
