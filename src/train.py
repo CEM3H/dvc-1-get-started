@@ -13,7 +13,7 @@ if __name__ == '__main__':
     X = train_dataset.drop('species', axis=1).values
 
     # Create an instance of Logistic Regression Classifier and fit the data.
-    clf = LogisticRegression(C=0.01, solver='lbfgs', multi_class='multinomial', max_iter=100)
+    clf = LogisticRegression(C=0.1, solver='lbfgs', multi_class='multinomial', max_iter=100)
     clf.fit(X, y)
 
     joblib.dump(clf, 'data/model.joblib')
